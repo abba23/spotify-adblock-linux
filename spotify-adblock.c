@@ -29,5 +29,5 @@ int getaddrinfo(const char *node, const char *service, const struct addrinfo *hi
         }
     }
     printf("[-] %s\n", node);
-    return -1;
+    return EAI_FAIL;
 }
