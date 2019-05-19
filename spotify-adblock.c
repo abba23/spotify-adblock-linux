@@ -1,6 +1,7 @@
 #define _GNU_SOURCE
 
 #include <dlfcn.h>
+#include <fnmatch.h>
 #include <netdb.h>
 #include <stdio.h>
 #include <string.h>
@@ -19,7 +20,7 @@ static void init_real_getaddrinfo(void) {
 int getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res) {
     int i;
     for (i = 0; i < sizeof(whitelist) / sizeof(whitelist[0]); i++) {
-        if (!strcmp(whitelist[i], node)) {
+        if (fnmatch(whitelist[i], node, FNM_NOESCAPE) == 0) {
             printf("[+] %s\n", node);
             if (!real_getaddrinfo) {
                 init_real_getaddrinfo();
