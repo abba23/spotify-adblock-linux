@@ -1,4 +1,4 @@
-static const char *whitelist[12] = {
+static const char *whitelist[14] = {
     "ap.spotify.com", // audio (access point)
     "*.ap.spotify.com", // resolved access points
     "apresolve.spotify.com", // access point resolving
@@ -9,7 +9,8 @@ static const char *whitelist[12] = {
     "merch-img.scdn.co", // merch images
     "mosaic.scdn.co", // playlist mosaic images
     "pl.scdn.co", // playlist images
+    "seeded-session-images.scdn.co", // radio images
     "t.scdn.co", // background images
-    "thisis-images.scdn.co" // 'this is' playlists images
-    //"spclient.wg.spotify.com" // ads, concerts, radio, recently played, friend activity,...
+    "thisis-images.scdn.co", // 'this is' playlists images
+    "spclient.wg.spotify.com", // ads (blocked in blacklist), tracking, videos, create radio station, concerts tab, recently played, friend activity,...
 };
