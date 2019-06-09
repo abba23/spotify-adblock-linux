@@ -8,5 +8,11 @@ Spotify adblocker for Linux that works by wrapping `getaddrinfo` and blocking al
     $ cd spotify-adblock-linux
     $ make
 
+## Installing
+    $ sudo make install
+
 ## Usage
-    $ LD_PRELOAD=./spotify-adblock.so spotify
+    $ LD_PRELOAD=/usr/local/bin/spotify-adblock.so spotify
+
+## Uninstalling
+    $ sudo make uninstall
