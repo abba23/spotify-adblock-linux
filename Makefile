@@ -6,7 +6,7 @@ PREFIX=/usr/local/bin
 
 all: $(TARGET).so
 
-$(TARGET).so: $(TARGET).c whitelist.h
+$(TARGET).so: $(TARGET).c whitelist.h blacklist.h
 	$(CC) $(CFLAGS) -o $@ $(LDLIBS) $^
 
 .PHONY: clean
