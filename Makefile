@@ -17,6 +17,6 @@ clean:
 install: $(TARGET).so
 	cp $^ $(PREFIX)
 
-.PHONY: install
+.PHONY: uninstall
 uninstall:
 	rm -f $(PREFIX)/$(TARGET).so
