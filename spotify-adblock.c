@@ -1,17 +1,17 @@
 #define _GNU_SOURCE
 
-#include <arpa/inet.h>
+#include <curl/curl.h>
 #include <dlfcn.h>
-#include <errno.h>
 #include <fnmatch.h>
 #include <netdb.h>
+#include <stdarg.h>
 #include <stdio.h>
 
 #include "whitelist.h"
 #include "blacklist.h"
 
 static typeof(getaddrinfo) *real_getaddrinfo = NULL;
-static typeof(connect) *real_connect = NULL;
+static typeof(curl_easy_setopt) *real_setopt = NULL;
 
 static void init_real_getaddrinfo(void) {
     real_getaddrinfo = dlsym(RTLD_NEXT, "getaddrinfo");
@@ -20,21 +20,19 @@ static void init_real_getaddrinfo(void) {
     }
 }
 
-static void init_real_connect(void) {
-    real_connect = dlsym(RTLD_NEXT, "connect");
-    if (!real_connect) {
-        fprintf(stderr, "dlsym (connect): %s\n", dlerror());
+static void init_real_setopt(void) {
+    real_setopt = dlsym(RTLD_NEXT, "curl_easy_setopt");
+    if (!real_setopt) {
+        fprintf(stderr, "dlsym (curl_easy_setopt): %s\n", dlerror());
     }
 }
 
 int getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res) {
     int i;
     for (i = 0; i < sizeof(whitelist) / sizeof(whitelist[0]); i++) {
-        if (fnmatch(whitelist[i], node, FNM_NOESCAPE) == 0) {
+        if (!fnmatch(whitelist[i], node, FNM_NOESCAPE)) {
             printf("[+] %s\n", node);
-            if (!real_getaddrinfo) {
-                init_real_getaddrinfo();
-            }
+            if (!real_getaddrinfo) init_real_getaddrinfo();
             return real_getaddrinfo(node, service, hints, res);
         }
     }
@@ -42,18 +40,24 @@ int getaddrinfo(const char *node, const char *service, const struct addrinfo *hi
     return EAI_FAIL;
 }
 
-int connect(int socket, const struct sockaddr *address, socklen_t address_len) {
-    const char *ip_address = inet_ntoa(((struct sockaddr_in *)address)->sin_addr);
-    int i;
-    for (i = 0; i < sizeof(blacklist) / sizeof(blacklist[0]); i++) {
-        if (!fnmatch(blacklist[i], ip_address, FNM_NOESCAPE)) {
-            printf("[-] %s\n", ip_address);
-            return ECONNREFUSED;
+#undef curl_easy_setopt
+CURLcode curl_easy_setopt(CURL *handle, CURLoption option, ...) {
+    if (option == CURLOPT_URL) {
+        va_list args;
+        va_start(args, option);
+        char *url = va_arg(args, char *);
+        va_end(args);
+        int i;
+        for (i = 0; i < sizeof(blacklist) / sizeof(blacklist[0]); i++) {
+            if (!fnmatch(blacklist[i], url, FNM_NOESCAPE)) {
+                printf("[-] %s\n", url);
+                return CURLE_URL_MALFORMAT;
+            }
         }
+        printf("[+] %s\n", url);
     }
-    printf("[+] %s\n", ip_address);
-    if (!real_connect) {
-        init_real_connect();
-    }
-    return real_connect(socket, address, address_len);
+    if (!real_setopt) init_real_setopt();
+    void *args = __builtin_apply_args();
+    void *ret = __builtin_apply((void *)real_setopt, args, 500);
+    __builtin_return(ret);
 }
