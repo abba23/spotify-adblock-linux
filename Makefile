@@ -4,6 +4,7 @@ LDLIBS=-ldl
 TARGET=spotify-adblock
 PREFIX=/usr/local/lib
 
+.PHONY: all
 all: $(TARGET).so
 
 $(TARGET).so: $(TARGET).c whitelist.h blacklist.h
