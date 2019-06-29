@@ -1,7 +1,9 @@
-static const char *whitelist[17] = {
+static const char *whitelist[19] = {
     "ap.spotify.com", // audio (access point)
     "*.ap.spotify.com", // resolved access points
     "apresolve.spotify.com", // access point resolving
+    "audio-sp-*.pscdn.co", // audio
+    "audio4-fa.scdn.co", // audio
     "charts-images.scdn.co", // charts images
     "dailymix-images.scdn.co", // daily mix images
     "i.scdn.co", // cover art
