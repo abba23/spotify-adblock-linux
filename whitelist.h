@@ -6,6 +6,7 @@ static const char *whitelist[20] = {
     "audio4-fa.scdn.co", // audio
     "charts-images.scdn.co", // charts images
     "dailymix-images.scdn.co", // daily mix images
+    "dealer.spotify.com", // discord rich presence
     "i.scdn.co", // cover art
     "lineup-images.scdn.co", // playlists lineup images
     "merch-img.scdn.co", // merch images
@@ -14,9 +15,8 @@ static const char *whitelist[20] = {
     "pl.scdn.co", // playlist images
     "profile-images.scdn.co", // artist profile images
     "seeded-session-images.scdn.co", // radio images
+    "spclient.wg.spotify.com", // ads/tracking (blocked in blacklist), radio, recently played, friend activity,...
     "t.scdn.co", // background images
     "thisis-images.scdn.co", // 'this is' playlists images
-    "spclient.wg.spotify.com", // ads/tracking (blocked in blacklist), radio, recently played, friend activity,...
     "video-fa.scdn.co", // videos
-    "dealer.spotify.com" // discord rich presence
 };
