@@ -11,6 +11,9 @@ Spotify adblocker for Linux that works by wrapping `getaddrinfo` and *libcurl*'s
 
 ## Usage
     $ LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
-
+      
+## Usage for fish shell
+    $ env LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
+    
 ## Uninstalling
     $ sudo make uninstall
