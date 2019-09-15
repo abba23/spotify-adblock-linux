@@ -16,9 +16,9 @@ static const char *whitelist[22] = {
     "pl.scdn.co", // playlist images
     "profile-images.scdn.co", // artist profile images
     "seeded-session-images.scdn.co", // radio images
+    "*.simplecast.com", // podcasts
     "spclient.wg.spotify.com", // ads/tracking (blocked in blacklist), radio, recently played, friend activity,...
     "t.scdn.co", // background images
     "thisis-images.scdn.co", // 'this is' playlists images
     "video-fa.scdn.co", // videos
-    "*.simplecast.com", // podcasts
 };
