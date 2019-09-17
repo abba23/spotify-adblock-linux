@@ -4,11 +4,13 @@ static const char *whitelist[22] = {
     "apresolve.spotify.com", // access point resolving
     "audio-sp-*.pscdn.co", // audio
     "audio4-fa.scdn.co", // audio
+    "audio.simplecast.com", // podcast
     "charts-images.scdn.co", // charts images
     "dailymix-images.scdn.co", // daily mix images
     "dealer.spotify.com", // discord rich presence
     "i.scdn.co", // cover art
     "lineup-images.scdn.co", // playlists lineup images
+    "media.simplecast.com", // podcast
     "merch-img.scdn.co", // merch images
     "mosaic.scdn.co", // playlist mosaic images
     "newjams-images.scdn.co", // release radar images
@@ -16,7 +18,6 @@ static const char *whitelist[22] = {
     "pl.scdn.co", // playlist images
     "profile-images.scdn.co", // artist profile images
     "seeded-session-images.scdn.co", // radio images
-    "*.simplecast.com", // podcasts
     "spclient.wg.spotify.com", // ads/tracking (blocked in blacklist), radio, recently played, friend activity,...
     "t.scdn.co", // background images
     "thisis-images.scdn.co", // 'this is' playlists images
