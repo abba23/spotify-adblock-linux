@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -shared -fPIC
+CFLAGS=-Wall
 LDLIBS=-ldl
 TARGET=spotify-adblock
 PREFIX=/usr/local/lib
@@ -8,7 +8,7 @@ PREFIX=/usr/local/lib
 all: $(TARGET).so
 
 $(TARGET).so: $(TARGET).c whitelist.h blacklist.h
-	$(CC) $(CFLAGS) -o $@ $(LDLIBS) $^
+	$(CC) $(CFLAGS) -shared -fPIC -o $@ $(LDLIBS) $^
 
 .PHONY: clean
 clean:
