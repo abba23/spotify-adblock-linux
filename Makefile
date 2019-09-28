@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-Wall
 LDLIBS=-ldl
 TARGET=spotify-adblock
-PREFIX=/usr/local/lib
+PREFIX=/usr/local
 
 .PHONY: all
 all: $(TARGET).so
@@ -16,8 +16,8 @@ clean:
 
 .PHONY: install
 install: $(TARGET).so
-	cp $^ $(PREFIX)
+	install -Dm644 -t $(DESTDIR)$(PREFIX)/lib $^
 
 .PHONY: uninstall
 uninstall:
-	rm -f $(PREFIX)/$(TARGET).so
+	rm -f $(PREFIX)/lib/$(TARGET).so
