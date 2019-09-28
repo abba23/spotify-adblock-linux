@@ -14,3 +14,18 @@ Spotify adblocker for Linux that works by wrapping `getaddrinfo` and *libcurl*'s
 
 ## Uninstalling
     $ sudo make uninstall
+
+## Desktop file
+```
+[Desktop Entry]
+Type=Application
+Name=Spotify (adblock)
+GenericName=Music Player
+Icon=spotify-client
+TryExec=spotify
+Exec=env LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify %U
+Terminal=false
+MimeType=x-scheme-handler/spotify;
+Categories=Audio;Music;Player;AudioVideo;
+StartupWMClass=spotify
+```
