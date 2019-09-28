@@ -8,7 +8,7 @@ PREFIX=/usr/local
 all: $(TARGET).so
 
 $(TARGET).so: $(TARGET).c whitelist.h blacklist.h
-	$(CC) $(CFLAGS) -shared -fPIC -o $@ $(LDLIBS) $^
+	$(CC) $(CFLAGS) -shared -fPIC -o $@ $(LDFLAGS) $(LDLIBS) $^
 
 .PHONY: clean
 clean:
