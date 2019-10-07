@@ -2,6 +2,13 @@
 Spotify adblocker for Linux that works by wrapping `getaddrinfo` and *libcurl*'s `curl_easy_setopt` and blocking all domains that aren't whitelisted, as well as blacklisted URLs.
 
 ## Building
+Prerequisites:
+* Make
+* gcc
+* libcurl headers (e.g. `libcurl4-gnutls-dev` on Debian/Ubuntu systems)
+
+---
+
     $ git clone https://github.com/abba23/spotify-adblock-linux.git
     $ cd spotify-adblock-linux
     $ make
