@@ -1,6 +1,8 @@
 # spotify-adblock-linux
 Spotify adblocker for Linux that works by wrapping `getaddrinfo` and *libcurl*'s `curl_easy_setopt` and blocking all domains that aren't whitelisted, as well as blacklisted URLs.
 
+NOTE: This does not work with the snap version of Spotify.
+
 ## Building
 Prerequisites:
 * Make
