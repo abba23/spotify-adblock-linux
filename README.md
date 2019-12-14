@@ -3,7 +3,6 @@ Spotify adblocker for Linux that works by wrapping `getaddrinfo` and *libcurl*'s
 
 ### Notes
 * This does not work with the snap Spotify package.
-* Opening a new page can sometimes take a few more seconds than usual, when Spotify tries to make some ad-related requests first.
 
 ## Building
 Prerequisites:

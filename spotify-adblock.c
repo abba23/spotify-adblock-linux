@@ -51,7 +51,10 @@ CURLcode curl_easy_setopt(CURL *handle, CURLoption option, ...) {
         for (i = 0; i < sizeof(blacklist) / sizeof(blacklist[0]); i++) {
             if (!fnmatch(blacklist[i], url, FNM_NOESCAPE)) {
                 printf("[-] %s\n", url);
-                return CURLE_URL_MALFORMAT;
+                // destroy handle, so the request can never be attempted
+                curl_easy_cleanup(handle);
+                handle = NULL;
+                return CURLE_OK;
             }
         }
         printf("[+] %s\n", url);
