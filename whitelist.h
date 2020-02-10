@@ -1,4 +1,6 @@
 static const char *whitelist[] = {
+    "traffic.libsyn.com", // podcasts
+    "hwcdn.libsyn.com", // podcasts
     "ap.spotify.com", // audio (access point)
     "*.ap.spotify.com", // resolved access points
     "apresolve.spotify.com", // access point resolving
