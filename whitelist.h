@@ -31,4 +31,5 @@ static const char *whitelist[] = {
     "t.scdn.co", // background images
     "thisis-images.scdn.co", // 'this is' playlists images
     "video-fa.scdn.co", // videos
+    "*.libsyn.com", // podcasts
 };
