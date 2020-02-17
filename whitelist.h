@@ -1,4 +1,5 @@
 static const char *whitelist[] = {
+    "localhost", // for using local proxies 
     "audio-sp-*.pscdn.co", // audio
     "audio-fa.scdn.co", // audio
     "audio4-fa.scdn.co", // audio
