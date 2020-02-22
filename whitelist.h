@@ -22,6 +22,9 @@ static const char *whitelist[] = {
     "rss.art19.com", // podcasts
     "hwcdn.libsyn.com", // podcasts
     "traffic.libsyn.com", // podcasts
+    "traffic.megaphone.fm", // podcasts
+    "dcs.megaphone.fm", // podcasts
+    "www.podtrac.com", // podcasts
     "audio.simplecast.com", // podcasts
     "media.simplecast.com", // podcasts
     "ap.spotify.com", // audio (access point)
