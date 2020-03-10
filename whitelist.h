@@ -30,6 +30,7 @@ static const char *whitelist[] = {
     "apresolve.spotify.com", // access point resolving
     "dealer.spotify.com", // discord rich presence
     "image-upload.spotify.com", // image uploading
+    "login*.spotify.com", // login
     "spclient.wg.spotify.com", // ads/tracking (blocked in blacklist), radio, recently played, friend activity,...
     "heads4-ak-spotify-com.akamaized.net", // audio (heads)
     "audio4-ak.spotify.com.edgesuite.net", // audio
