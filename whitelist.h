@@ -23,6 +23,7 @@ static const char *whitelist[] = {
     "rss.art19.com", // podcasts
     "hwcdn.libsyn.com", // podcasts
     "traffic.libsyn.com", // podcasts
+    "www.podtrac.com", // podcasts
     "audio.simplecast.com", // podcasts
     "media.simplecast.com", // podcasts
     "ap.spotify.com", // audio (access point)
@@ -32,6 +33,8 @@ static const char *whitelist[] = {
     "image-upload.spotify.com", // image uploading
     "login*.spotify.com", // login
     "spclient.wg.spotify.com", // ads/tracking (blocked in blacklist), radio, recently played, friend activity,...
+    "dcs*.megaphone.fm", // podcasts
+    "traffic.megaphone.fm", // podcasts
     "heads4-ak-spotify-com.akamaized.net", // audio (heads)
     "audio4-ak.spotify.com.edgesuite.net", // audio
     "audio-sp-*.spotifycdn.net", // audio
