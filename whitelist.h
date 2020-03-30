@@ -1,4 +1,5 @@
 static const char *whitelist[] = {
+    "platform-lookaside.fbsbx.com", // Facebook friends profile pictures 2
     "localhost", // for using local proxies 
     "audio-sp-*.pscdn.co", // audio
     "audio-fa.scdn.co", // audio
@@ -12,6 +13,7 @@ static const char *whitelist[] = {
     "merch-img.scdn.co", // merch images
     "mosaic.scdn.co", // playlist mosaic images
     "newjams-images.scdn.co", // release radar images
+    "i.scdn.co",  // Facebook friends profile pictures 3
     "o.scdn.co", // cover art
     "pl.scdn.co", // playlist images
     "profile-images.scdn.co", // artist profile images
@@ -39,6 +41,4 @@ static const char *whitelist[] = {
     "audio4-ak.spotify.com.edgesuite.net", // audio
     "audio-sp-*.spotifycdn.net", // audio
     "scontent.xx.fbcdn.net", // Facebook friends profile pictures 1
-    "platform-lookaside.fbsbx.com", // Facebook friends profile pictures 2
-    "i.scdn.co",  // Facebook friends profile pictures 3
 };
