@@ -1,0 +1,17 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: install libcurl headers
+      run: sudo apt install libcurl4-gnutls-dev
+    - uses: actions/checkout@v2
+    - name: make
+      run: make
+    - uses: actions/upload-artifact@v1
+      with:
+        name: spotify-adblock.so
+        path: spotify-adblock.so

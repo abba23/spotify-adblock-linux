@@ -1,0 +1,25 @@
+name: release
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: install libcurl headers
+      run: sudo apt install libcurl4-gnutls-dev 
+    - uses: actions/checkout@v2
+    - name: make
+      run: make
+    - name: attach to release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: spotify-adblock.so
+        asset_name: spotify-adblock.so
+        asset_content_type: application/octet-stream
