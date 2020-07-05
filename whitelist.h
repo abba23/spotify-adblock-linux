@@ -21,7 +21,7 @@ static const char *whitelist[] = {
     "video-fa.scdn.co", // videos
     "content.production.cdn.art19.com", // podcasts
     "rss.art19.com", // podcasts
-     "platform-lookaside.fbsbx.com", // Facebook profile images
+    "platform-lookaside.fbsbx.com", // Facebook profile images
     "hwcdn.libsyn.com", // podcasts
     "traffic.libsyn.com", // podcasts
     "www.podtrac.com", // podcasts
