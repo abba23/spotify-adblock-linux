@@ -36,6 +36,7 @@ static const char *whitelist[] = {
     "audio-fa.spotifycdn.com", // audio
     "dcs*.megaphone.fm", // podcasts
     "traffic.megaphone.fm", // podcasts
+    "audio-ak-spotify-com.akamaized.net", // audio
     "audio4-ak-spotify-com.akamaized.net", // audio
     "heads4-ak-spotify-com.akamaized.net", // audio (heads)
     "audio4-ak.spotify.com.edgesuite.net", // audio
