@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-Wall
-LDLIBS=-ldl
+CFLAGS=-Wall -lcurl
+LDLIBS=-ldl -lcurl
 TARGET=spotify-adblock
 PREFIX=/usr/local
 
