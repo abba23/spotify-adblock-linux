@@ -21,6 +21,7 @@ static const char *whitelist[] = {
     "video-fa.scdn.co", // videos
     "content.production.cdn.art19.com", // podcasts
     "rss.art19.com", // podcasts
+    "platform-lookaside.fbsbx.com", // Facebook profile images
     "hwcdn.libsyn.com", // podcasts
     "traffic.libsyn.com", // podcasts
     "www.podtrac.com", // podcasts
@@ -40,5 +41,6 @@ static const char *whitelist[] = {
     "audio4-ak-spotify-com.akamaized.net", // audio
     "heads4-ak-spotify-com.akamaized.net", // audio (heads)
     "audio4-ak.spotify.com.edgesuite.net", // audio
+    "scontent*.fbcdn.net", // Facebook profile images
     "audio-sp-*.spotifycdn.net", // audio
 };
