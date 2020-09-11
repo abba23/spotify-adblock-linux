@@ -7,24 +7,23 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#include "whitelist.h"
 #include "blacklist.h"
+#include "whitelist.h"
+
+#define INIT_REAL_FUNCTION(name) \
+    do { \
+        real_##name = dlsym(RTLD_NEXT, #name); \
+        if (!(real_##name)) { \
+            fprintf(stderr, "dlsym (%s): %s\n", #name, dlerror()); \
+        } \
+    } while (0)
 
 static typeof(getaddrinfo) *real_getaddrinfo = NULL;
-static typeof(curl_easy_setopt) *real_setopt = NULL;
+static typeof(curl_easy_setopt) *real_curl_easy_setopt = NULL;
 
-static void init_real_getaddrinfo(void) {
-    real_getaddrinfo = dlsym(RTLD_NEXT, "getaddrinfo");
-    if (!real_getaddrinfo) {
-        fprintf(stderr, "dlsym (getaddrinfo): %s\n", dlerror());
-    }
-}
-
-static void init_real_setopt(void) {
-    real_setopt = dlsym(RTLD_NEXT, "curl_easy_setopt");
-    if (!real_setopt) {
-        fprintf(stderr, "dlsym (curl_easy_setopt): %s\n", dlerror());
-    }
+void __attribute__((constructor)) init(void) {
+    INIT_REAL_FUNCTION(getaddrinfo);
+    INIT_REAL_FUNCTION(curl_easy_setopt);
 }
 
 int getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res) {
@@ -32,7 +31,6 @@ int getaddrinfo(const char *node, const char *service, const struct addrinfo *hi
     for (i = 0; i < sizeof(whitelist) / sizeof(whitelist[0]); i++) {
         if (!fnmatch(whitelist[i], node, FNM_NOESCAPE)) {
             printf("[+] %s\n", node);
-            if (!real_getaddrinfo) init_real_getaddrinfo();
             return real_getaddrinfo(node, service, hints, res);
         }
     }
@@ -51,16 +49,12 @@ CURLcode curl_easy_setopt(CURL *handle, CURLoption option, ...) {
         for (i = 0; i < sizeof(blacklist) / sizeof(blacklist[0]); i++) {
             if (!fnmatch(blacklist[i], url, FNM_NOESCAPE)) {
                 printf("[-] %s\n", url);
-                // destroy handle, so the request can never be attempted
-                curl_easy_cleanup(handle);
-                handle = NULL;
                 return CURLE_OK;
             }
         }
         printf("[+] %s\n", url);
     }
-    if (!real_setopt) init_real_setopt();
     void *args = __builtin_apply_args();
-    void *ret = __builtin_apply((void *)real_setopt, args, 500);
+    void *ret = __builtin_apply((void *)real_curl_easy_setopt, args, 500);
     __builtin_return(ret);
 }
