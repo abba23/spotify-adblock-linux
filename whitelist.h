@@ -21,13 +21,13 @@ static const char *whitelist[] = {
     "video-fa.scdn.co", // videos
     "content.production.cdn.art19.com", // podcasts
     "rss.art19.com", // podcasts
+    "*.buzzsprout.com", // podcasts
     "platform-lookaside.fbsbx.com", // Facebook profile images
     "hwcdn.libsyn.com", // podcasts
     "traffic.libsyn.com", // podcasts
     "www.podtrac.com", // podcasts
     "audio.simplecast.com", // podcasts
     "media.simplecast.com", // podcasts
-    "*.buzzsprout.com", // podcasts e.g. new scientist
     "ap.spotify.com", // audio (access point)
     "*.ap.spotify.com", // resolved access points
     "apresolve.spotify.com", // access point resolving
