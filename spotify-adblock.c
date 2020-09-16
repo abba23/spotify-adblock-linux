@@ -13,7 +13,7 @@
 #define INIT_REAL_FUNCTION(name) \
     do { \
         real_##name = dlsym(RTLD_NEXT, #name); \
-        if (!(real_##name)) { \
+        if (!real_##name) { \
             fprintf(stderr, "dlsym (%s): %s\n", #name, dlerror()); \
         } \
     } while (0)
@@ -29,7 +29,7 @@ void __attribute__((constructor)) init(void) {
 int getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res) {
     int i;
     for (i = 0; i < sizeof(whitelist) / sizeof(whitelist[0]); i++) {
-        if (!fnmatch(whitelist[i], node, FNM_NOESCAPE)) {
+        if (!fnmatch(whitelist[i], node, 0)) {
             printf("[+] %s\n", node);
             return real_getaddrinfo(node, service, hints, res);
         }
@@ -47,7 +47,7 @@ CURLcode curl_easy_setopt(CURL *handle, CURLoption option, ...) {
         va_end(args);
         int i;
         for (i = 0; i < sizeof(blacklist) / sizeof(blacklist[0]); i++) {
-            if (!fnmatch(blacklist[i], url, FNM_NOESCAPE)) {
+            if (!fnmatch(blacklist[i], url, 0)) {
                 printf("[-] %s\n", url);
                 return CURLE_OK;
             }

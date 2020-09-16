@@ -1,5 +1,5 @@
 static const char *whitelist[] = {
-    "localhost", // for using local proxies 
+    "localhost", // local proxies
     "audio-sp-*.pscdn.co", // audio
     "audio-fa.scdn.co", // audio
     "audio4-fa.scdn.co", // audio
@@ -31,7 +31,7 @@ static const char *whitelist[] = {
     "ap.spotify.com", // audio (access point)
     "*.ap.spotify.com", // resolved access points
     "apresolve.spotify.com", // access point resolving
-    "dealer.spotify.com", // discord rich presence
+    "dealer.spotify.com", // player activity (websocket)
     "image-upload.spotify.com", // image uploading
     "login*.spotify.com", // login
     "spclient.wg.spotify.com", // ads/tracking (blocked in blacklist), radio, recently played, friend activity,...
