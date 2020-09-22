@@ -3,6 +3,7 @@ Spotify adblocker for Linux that works by wrapping `getaddrinfo` and *libcurl*'s
 
 ### Notes
 * This does not work with the snap Spotify package.
+* If you use Arch Linux, see [here](#for-arch-linux-users)
 
 ## Building
 Prerequisites:
@@ -49,3 +50,11 @@ StartupWMClass=spotify
 
 ## Uninstalling
     $ sudo make uninstall
+    
+## For Arch Linux users
+This is also available in the [AUR](https://aur.archlinux.org/packages/spotify-adblock-linux/), but not maintained by me. You can install it from there too. </br>
+If you install from there, then the path will be `/usr/lib/spotify-adblock.so`
+
+    $ LD_PRELOAD=/usr/lib/spotify-adblock.so spotify
+       
+Also, the AUR package automatically installs the Desktop Entry. See [here](https://aur.archlinux.org/cgit/aur.git/tree/spotify-adblock.desktop?h=spotify-adblock-linux).
