@@ -6,6 +6,9 @@
 #include <netdb.h>
 #include <stdarg.h>
 #include <stdio.h>
+#include <string.h>
+
+#include "include/capi/cef_urlrequest_capi.h"
 
 #include "blacklist.h"
 #include "whitelist.h"
@@ -20,21 +23,23 @@
 
 static typeof(getaddrinfo) *real_getaddrinfo = NULL;
 static typeof(curl_easy_setopt) *real_curl_easy_setopt = NULL;
+static typeof(cef_urlrequest_create) *real_cef_urlrequest_create = NULL;
 
 void __attribute__((constructor)) init(void) {
     INIT_REAL_FUNCTION(getaddrinfo);
     INIT_REAL_FUNCTION(curl_easy_setopt);
+    INIT_REAL_FUNCTION(cef_urlrequest_create);
 }
 
 int getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res) {
     int i;
     for (i = 0; i < sizeof(whitelist) / sizeof(whitelist[0]); i++) {
         if (!fnmatch(whitelist[i], node, 0)) {
-            printf("[+] %s\n", node);
+            printf("[+] getaddrinfo:\t\t%s\n", node);
             return real_getaddrinfo(node, service, hints, res);
         }
     }
-    printf("[-] %s\n", node);
+    printf("[-] getaddrinfo:\t\t%s\n", node);
     return EAI_FAIL;
 }
 
@@ -48,13 +53,32 @@ CURLcode curl_easy_setopt(CURL *handle, CURLoption option, ...) {
         int i;
         for (i = 0; i < sizeof(blacklist) / sizeof(blacklist[0]); i++) {
             if (!fnmatch(blacklist[i], url, 0)) {
-                printf("[-] %s\n", url);
+                printf("[-] curl_easy_setopt:\t\t%s\n", url);
                 return CURLE_OK;
             }
         }
-        printf("[+] %s\n", url);
+        printf("[+] curl_easy_setopt:\t\t%s\n", url);
     }
     void *args = __builtin_apply_args();
     void *ret = __builtin_apply((void *)real_curl_easy_setopt, args, 500);
     __builtin_return(ret);
+}
+
+cef_urlrequest_t* cef_urlrequest_create(struct _cef_request_t* request, struct _cef_urlrequest_client_t* client, struct _cef_request_context_t* request_context) {
+    cef_string_userfree_utf16_t url_utf16 = request->get_url(request);
+    cef_string_userfree_utf8_t url_utf8 = cef_string_userfree_utf8_alloc();
+    cef_string_utf16_to_utf8(url_utf16->str, url_utf16->length * 2, url_utf8);
+    cef_string_userfree_utf16_free(url_utf16);
+    char url[url_utf8->length];
+    strncpy(url, url_utf8->str, url_utf8->length);
+    cef_string_userfree_utf8_free(url_utf8);
+    int i;
+    for (i = 0; i < sizeof(blacklist) / sizeof(blacklist[0]); i++) {
+        if (!fnmatch(blacklist[i], url, 0)) {
+            printf("[-] cef_urlrequest_create:\t%s\n", url);
+            return NULL;
+        }
+    }
+    printf("[+] cef_urlrequest_create:\t%s\n", url);
+    return real_cef_urlrequest_create(request, client, request_context);
 }
