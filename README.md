@@ -15,19 +15,19 @@ Prerequisites:
 
 ---
 
-    $ git clone https://github.com/abba23/spotify-adblock-linux.git
-    $ cd spotify-adblock-linux
-    $ wget -O cef.tar.bz2 http://opensource.spotify.com/cefbuilds/cef_binary_80.0.8%2Bgf96cd1d%2Bchromium-80.0.3987.132_linux64_minimal.tar.bz2
-    $ tar -xf cef.tar.bz2 --wildcards '*/include' --strip-components=1
-    $ make
+    git clone https://github.com/abba23/spotify-adblock-linux.git
+    cd spotify-adblock-linux
+    wget -O cef.tar.bz2 http://opensource.spotify.com/cefbuilds/cef_binary_80.0.8%2Bgf96cd1d%2Bchromium-80.0.3987.132_linux64_minimal.tar.bz2
+    tar -xf cef.tar.bz2 --wildcards '*/include' --strip-components=1
+    make
 
 ## Installing
-    $ sudo make install
+    sudo make install
 
 ## Usage
 
 ### Command-line
-    $ LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
+    LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
 
 ### Desktop file
 You can also integrate it with your desktop environment by creating a `.desktop` file (e.g. `spotify-adblock.desktop`) in `~/.local/share/applications`. This lets you easily run it from an application launcher without opening a terminal.
@@ -53,4 +53,4 @@ StartupWMClass=spotify
 </details>
 
 ## Uninstalling
-    $ sudo make uninstall
+    sudo make uninstall
