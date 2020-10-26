@@ -16,7 +16,7 @@ clean:
 
 .PHONY: install
 install: $(TARGET).so
-	install -Dm644 -t $(DESTDIR)$(PREFIX)/lib $^
+	install --strip -Dm644 -t $(DESTDIR)$(PREFIX)/lib $^
 
 .PHONY: uninstall
 uninstall:
