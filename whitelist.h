@@ -44,7 +44,6 @@ static const char *whitelist[] = {
     "audio4-ak.spotify.com.edgesuite.net", // audio
     "scontent*.fbcdn.net", // Facebook profile images
     "audio-sp-*.spotifycdn.net", // audio
-    "genius.com", //lyrics (genius-spicetify)
-    "apic-desktop.musixmatch.com", //lyrics (genius-spicetify)
-    "*.musixmatch.com", //lyrics (genius-spicetify)
+    "genius.com", // lyrics (genius-spicetify)
+    "api*-desktop.musixmatch.com", // lyrics (genius-spicetify)
 };
