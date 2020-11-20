@@ -23,8 +23,10 @@ static const char *whitelist[] = {
     "rss.art19.com", // podcasts
     "*.buzzsprout.com", // podcasts
     "platform-lookaside.fbsbx.com", // Facebook profile images
+    "genius.com", // lyrics (genius-spicetify)
     "hwcdn.libsyn.com", // podcasts
     "traffic.libsyn.com", // podcasts
+    "api*-desktop.musixmatch.com", // lyrics (genius-spicetify)
     "www.podtrac.com", // podcasts
     "audio.simplecast.com", // podcasts
     "media.simplecast.com", // podcasts
