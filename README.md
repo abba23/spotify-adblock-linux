@@ -1,5 +1,5 @@
 # spotify-adblock-linux
-Spotify adblocker for Linux that works by wrapping `getaddrinfo`, `curl_easy_setopt` and `cef_urlrequest_create`, blocking non-whitelisted domains and blacklisted URLs.
+Spotify adblocker for Linux that works by wrapping `getaddrinfo` and `cef_urlrequest_create`, blocking non-whitelisted domains and blacklisted URLs.
 
 ### Notes
 * This does not work with the snap Spotify package.
@@ -11,7 +11,6 @@ Prerequisites:
 * tar
 * Make
 * GCC
-* libcurl headers (e.g. `libcurl4-gnutls-dev` on Debian/Ubuntu systems)
 
 ---
 
@@ -21,7 +20,7 @@ Prerequisites:
     $ tar -xf cef.tar.bz2 --wildcards '*/include' --strip-components=1
     $ make
 
-## Installing
+## Install
     $ sudo make install
 
 ## Usage
@@ -52,5 +51,5 @@ StartupWMClass=spotify
   </p>
 </details>
 
-## Uninstalling
+## Uninstall
     $ sudo make uninstall
