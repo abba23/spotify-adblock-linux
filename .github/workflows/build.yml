@@ -6,8 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Install libcurl headers
-      run: sudo apt install libcurl4-gnutls-dev
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Download CEF
