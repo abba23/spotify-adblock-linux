@@ -26,6 +26,10 @@ static const char *whitelist[] = {
     "platform-lookaside.fbsbx.com", // Facebook profile images
     "genius.com", // lyrics (genius-spicetify)
     "*.gvt1.com", // Widevine download
+    "www.reddit.com", // reddit content (https://github.com/khanhas/spicetify-cli/tree/master/CustomApps/reddit)
+    "www.youtube.com", // YouTube entry (https://github.com/khanhas/spicetify-cli/tree/master/CustomApps/reddit)
+    "i.ytimg.com", // YouTube thumbnail (https://github.com/khanhas/spicetify-cli/tree/master/CustomApps/reddit)
+    "*.googlevideo.com", // YouTube video playback (https://github.com/khanhas/spicetify-cli/tree/master/CustomApps/reddit)
     "hwcdn.libsyn.com", // podcasts
     "traffic.libsyn.com", // podcasts
     "api*-desktop.musixmatch.com", // lyrics (genius-spicetify)
