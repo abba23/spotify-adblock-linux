@@ -11,6 +11,7 @@ Prerequisites:
 * tar
 * Make
 * GCC
+* libc headers (e.g. `libc-dev` on Debian-based distributions)
 
 ---
 
