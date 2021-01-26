@@ -9,7 +9,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Download CEF
-      run: wget -O cef.tar.bz2 http://opensource.spotify.com/cefbuilds/cef_binary_80.0.8%2Bgf96cd1d%2Bchromium-80.0.3987.132_linux64_minimal.tar.bz2
+      run: wget -O cef.tar.bz2 https://cef-builds.spotifycdn.com/cef_binary_88.1.6%2Bg4fe33a1%2Bchromium-88.0.4324.96_linux32_minimal.tar.bz2
     - name: Extract CEF headers
       run: tar -xf cef.tar.bz2 --wildcards '*/include' --strip-components=1
     - name: Run make
