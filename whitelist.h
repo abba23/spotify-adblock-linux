@@ -34,7 +34,7 @@ static const char *whitelist[] = {
     "*.ap.spotify.com", // resolved access points
     "apresolve.spotify.com", // access point resolving
     "dealer.spotify.com", // player activity (websocket)
-    "image-upload.spotify.com", // image uploading
+    "image-upload*.spotify.com", // image uploading
     "login*.spotify.com", // login
     "spclient.wg.spotify.com", // ads/tracking (blocked in blacklist), radio, recently played, friend activity,...
     "audio-fa.spotifycdn.com", // audio
