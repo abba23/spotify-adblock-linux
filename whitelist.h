@@ -32,9 +32,11 @@ static const char *whitelist[] = {
     "media.simplecast.com", // podcasts
     "ap.spotify.com", // audio (access point)
     "*.ap.spotify.com", // resolved access points
+    "api.spotify.com", // queue
+    "api-partner.spotify.com", // album/artist pages
     "apresolve.spotify.com", // access point resolving
     "clienttoken.spotify.com", // login
-    "dealer.spotify.com", // player activity (websocket)
+    "*dealer.spotify.com", // websocket connections
     "image-upload*.spotify.com", // image uploading
     "login*.spotify.com", // login
     "spclient.wg.spotify.com", // ads/tracking (blocked in blacklist), radio, recently played, friend activity,...
