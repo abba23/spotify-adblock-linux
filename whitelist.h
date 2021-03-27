@@ -52,5 +52,6 @@ static const char *whitelist[] = {
     "scontent*.fbcdn.net", // Facebook profile images
     "audio-sp-*.spotifycdn.net", // audio
     "dovetail.prxu.org", // podcasts
+    "gew-spclient.spotify.com", // new version main page and search
     "dovetail-cdn.prxu.org", // podcasts
 };
