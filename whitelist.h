@@ -27,6 +27,7 @@ static const char *whitelist[] = {
     "hwcdn.libsyn.com", // podcasts
     "traffic.libsyn.com", // podcasts
     "api*-desktop.musixmatch.com", // lyrics (genius-spicetify)
+    "*.podbean.com", // podcasts
     "dts.podtrac.com", // podcasts
     "www.podtrac.com", // podcasts
     "audio.simplecast.com", // podcasts
@@ -42,6 +43,7 @@ static const char *whitelist[] = {
     "login*.spotify.com", // login
     "spclient.wg.spotify.com", // ads/tracking (blocked in blacklist), radio, recently played, friend activity,...
     "audio-fa.spotifycdn.com", // audio
+    "seed-mix-image.spotifycdn.com", // mix images
     "download.ted.com", // podcasts
     "dcs*.megaphone.fm", // podcasts
     "traffic.megaphone.fm", // podcasts
