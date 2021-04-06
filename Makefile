@@ -4,9 +4,10 @@ LDLIBS=-ldl
 TARGET=spotify-adblock
 PREFIX=/usr/local
 CEF_URL=https://cef-builds.spotifycdn.com
+# Current stable build, as per https://cef-builds.spotifycdn.com/index.html#linux64
 # SAFE URL ENCODED and DECODED ("%2B" = "+")
-CEF_URL_FILE=cef_binary_89.0.15%2Bgdef70e4%2Bchromium-89.0.4389.90_linux64_minimal.tar.bz2
-CEF_FILE=cef_binary_89.0.15+gdef70e4+chromium-89.0.4389.90_linux64_minimal.tar.bz2
+CEF_URL_FILE=cef_binary_89.0.18%2Bgb36241d%2Bchromium-89.0.4389.114_linux64_minimal.tar.bz2
+CEF_FILE=$(subst %2B,+,$(CEF_URL_FILE))
 
 # Dummy file to keep track of if we have extracted archive or not
 EXTRACT_CEF := $(addprefix .extract_,$(CEF_FILE))
