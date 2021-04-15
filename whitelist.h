@@ -58,4 +58,5 @@ static const char *whitelist[] = {
     "audio-sp-*.spotifycdn.net", // audio
     "dovetail.prxu.org", // podcasts
     "dovetail-cdn.prxu.org", // podcasts
+    "*.gvt1.com", // install widevine
 };
