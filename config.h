@@ -2,7 +2,6 @@
 #include <glib.h>
 #include <cyaml/cyaml.h>
 
-// blacklist.h + whitelist.h are included by spotify-adblock.c
 #include "blacklist.h"
 #include "whitelist.h"
 

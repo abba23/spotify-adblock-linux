@@ -1,6 +1,7 @@
 CC = gcc
-CFLAGS = -Wall -I.
-LDLIBS = -ldl -lcef -lglib-2.0 -lyaml -lcyaml
+# TODO do we need libyaml? = yaml-0.1 in pkg-config
+CFLAGS = -Wall -I. $(shell pkg-config --cflags glib-2.0 libcyaml)
+LDLIBS = -ldl -lcef -lglib-2.0 -lyaml -lcyaml $(shell pkg-config --libs glib-2.0 libcyaml)
 # we must link against libcef.so to fix "undefined symbol: cef_string_userfree_utf16_free"
 # libcef.so is provided by spotify (usually in /share/spotify)
 
