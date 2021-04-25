@@ -2,7 +2,7 @@
 Spotify adblocker for Linux that works by wrapping `getaddrinfo` and `cef_urlrequest_create`, blocking non-whitelisted domains and blacklisted URLs.
 
 ### Notes
-* This does not work with the snap and Flatpak Spotify packages.
+* This does not work with the snap Spotify packages.
 
 ## Build
 Prerequisites:
