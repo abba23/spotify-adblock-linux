@@ -1,10 +1,7 @@
 #!/bin/sh
-flatpak install -y flathub org.freedesktop.Sdk//20.08
 flatpak install -y flathub com.spotify.Client
-flatpak run --filesystem="$(pwd):rw" --command=bash org.freedesktop.Sdk//20.08 <<EOF
-make clean
-make
-EOF
+wget -qO "$(pwd)/spotify-adblock.so" "https://github.com/abba23/spotify-adblock-linux/releases/download/$(curl -w '%{redirect_url}' -so /dev/null https://github.com/abba23/spotify-adblock-linux/releases/latest | rev | cut -d/ -f1 | rev)/spotify-adblock.so"
+chmod +x "$(pwd)/spotify-adblock.so"
 flatpak override --user --filesystem="$(pwd):ro"
 mkdir -p "$HOME/.local/share/applications"
 cat > "$HOME/.local/share/applications/com.spotify.Client.desktop" <<EOF
