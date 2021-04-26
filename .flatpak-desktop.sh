@@ -1,4 +1,4 @@
-wget -O flatpak-spotify.sh https://raw.githubusercontent.com/flathub/com.spotify.Client/master/spotify-bin
+flatpak run --command=bash com.spotify.Client -c 'cat $(which spotify)' > flatpak-spotify.sh
 sed -i flatpak-spotify.sh -e 's/LD_PRELOAD=/LD_PRELOAD='"$(pwd | sed 's/\//\\\//g')"'\/spotify-adblock.so:/g'
 chmod +x flatpak-spotify.sh
 flatpak override --user --filesystem="$(pwd):ro"
