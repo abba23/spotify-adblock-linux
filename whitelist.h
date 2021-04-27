@@ -25,6 +25,7 @@ static const char *whitelist[] = {
     "*.buzzsprout.com", // podcasts
     "platform-lookaside.fbsbx.com", // Facebook profile images
     "genius.com", // lyrics (genius-spicetify)
+    "*.gvt1.com", // Widevine download
     "hwcdn.libsyn.com", // podcasts
     "traffic.libsyn.com", // podcasts
     "api*-desktop.musixmatch.com", // lyrics (genius-spicetify)
