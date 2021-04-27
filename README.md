@@ -49,7 +49,7 @@ You could also automate the above by running the following sed command: `sed -i 
 
 To run the Spotify flatpak app, you would use `flatpak run --command="/path/to/flatpak-spotify-adblock.sh" com.spotify.Client`.  
 
-Replace `/path/to/flatpak-spotify-adblock.sh` with the path to that script.
+Replace `/path/to/flatpak-spotify-adblock.sh` with the path to that script and make sure it has executable permissions (`chmod +x /path/to/flatpak-spotify-adblock.sh`).
 
 ## Usage
 
