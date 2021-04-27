@@ -30,7 +30,7 @@ Go to the folder with `spotify-adblock.so` (/usr, /bin, or /app aren't going to 
 
 ```
 $ flatpak run --command=bash com.spotify.Client -c 'cat "$(command -v spotify)"' > flatpak-spotify-adblock.sh
-$ flatpak override --user --filesystem="$(pwd):ro"
+$ flatpak override --user --filesystem="$(pwd):ro com.spotify.Client"
 ```
 
 Now you need to modify `flatpak-spotify-adblock.sh` to have `spotify-adblock.so` in its `LD_PRELOAD` list, you do this by finding `LD_PRELOAD` in `flatpak-spotify-adblock.sh` and adding `spotify-adblock.so` to it (each object is delimited by either a space or colon). For example, you'd replace this line:   
