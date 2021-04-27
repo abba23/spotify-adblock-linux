@@ -59,7 +59,7 @@ Replace `/path/to/flatpak-spotify-adblock.sh` with the path to that script.
 ### Desktop file
 You can also integrate it with your desktop environment by creating a `.desktop` file (e.g. `spotify-adblock.desktop`) in `~/.local/share/applications`. This lets you easily run it from an application launcher without opening a terminal.  
 
-For flatpak, the `Icon` would be `com.spotify.Client` and `Exec` line would be in the form `flatpak run --command="/path/to/flatpak-spotify-adblock.sh" --file-forwarding com.spotify.Client @@u %U @@`.
+For flatpak, the `Icon` would be `com.spotify.Client` and `Exec` line would be in the form `flatpak run --command="/path/to/flatpak-spotify-adblock.sh" --file-forwarding com.spotify.Client @@u %U @@`. You will also need to remove the `TryExec` line.
 
 <details> 
   <summary>Example</summary>
