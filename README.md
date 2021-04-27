@@ -47,27 +47,9 @@ env PULSE_PROP_application.icon_name="com.spotify.Client" LD_PRELOAD=/path/to/sp
 
 You could also automate the above by running the following sed command: `sed -i flatpak-spotify-adblock.sh -e 's/LD_PRELOAD=/LD_PRELOAD='"$(pwd | sed 's/\//\\\//g')"'\/spotify-adblock.so:/g'`  
 
-Now you need to create a .desktop file which is exactly called `com.spotify.Client.desktop` in `~/.local/share/applications` that would have the following contents:  
+To run the Spotify flatpak app, you would use `flatpak run --command="/path/to/flatpak-spotify-adblock.sh" com.spotify.Client`.  
 
-```
-[Desktop Entry]
-Type=Application
-Name=Spotify
-GenericName=Online music streaming service
-Comment=Access all of your favorite music
-Icon=com.spotify.Client
-Exec=flatpak run --command="/path/to/flatpak-spotify-adblock.sh" --file-forwarding com.spotify.Client @@u %U @@
-Terminal=false
-MimeType=x-scheme-handler/spotify;
-Categories=Audio;Music;AudioVideo;
-Keywords=Music;Player;Streaming;Online;
-StartupWMClass=Spotify
-X-GNOME-UsesNotifications=true
-X-Flatpak-Tags=proprietary;
-X-Flatpak=com.spotify.Client
-```
-
-Replace `/path/to/flatpak-spotify-adblock.sh` with the path to that script. Now you're done and should be able to open Spotify from your desktop menu.
+Replace `/path/to/flatpak-spotify-adblock.sh` with the path to that script.
 
 ## Usage
 
@@ -75,7 +57,9 @@ Replace `/path/to/flatpak-spotify-adblock.sh` with the path to that script. Now 
     $ LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
 
 ### Desktop file
-You can also integrate it with your desktop environment by creating a `.desktop` file (e.g. `spotify-adblock.desktop`) in `~/.local/share/applications`. This lets you easily run it from an application launcher without opening a terminal.
+You can also integrate it with your desktop environment by creating a `.desktop` file (e.g. `spotify-adblock.desktop`) in `~/.local/share/applications`. This lets you easily run it from an application launcher without opening a terminal.  
+
+For flatpak, the `Icon` would be `com.spotify.Client` and `Exec` line would be in the form `flatpak run --command="/path/to/flatpak-spotify-adblock.sh" com.spotify.Client`.
 
 <details> 
   <summary>Example</summary>
