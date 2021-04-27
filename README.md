@@ -2,7 +2,7 @@
 Spotify adblocker for Linux that works by wrapping `getaddrinfo` and `cef_urlrequest_create`, blocking non-whitelisted domains and blacklisted URLs.
 
 ### Notes
-* This does not work with the snap and Flatpak Spotify packages.
+* This does not work with the snap Spotify packages.
 
 ## Build
 Prerequisites:
@@ -23,6 +23,51 @@ Prerequisites:
 
 ## Install
     $ sudo make install
+
+## Install on Flatpak
+
+Go to the folder with `spotify-adblock.so` (/usr, /bin, or /app aren't going to work), save the flatpak spotify wrapper, and grant the flatpak permission to access those files with `flatpak override`:  
+
+```
+$ flatpak run --command=bash com.spotify.Client -c 'cat "$(command -v spotify)"' > flatpak-spotify-adblock.sh
+$ flatpak override --user --filesystem="$(pwd):ro"
+```
+
+Now you need to modify `flatpak-spotify-adblock.sh` to have `spotify-adblock.so` in its `LD_PRELOAD` list, you do this by finding `LD_PRELOAD` in `flatpak-spotify-adblock.sh` and adding `spotify-adblock.so` to it (each object is delimited by either a space or colon). For example, you'd replace this line:   
+
+```
+env PULSE_PROP_application.icon_name="com.spotify.Client" LD_PRELOAD=/app/lib/spotifywm.so /app/extra/bin/spotify --force-device-scale-factor=$SCALE_FACTOR "$@" &
+```
+
+with:   
+
+```
+env PULSE_PROP_application.icon_name="com.spotify.Client" LD_PRELOAD=/path/to/spotify-adblock.so:/app/lib/spotifywm.so /app/extra/bin/spotify --force-device-scale-factor=$SCALE_FACTOR "$@" &
+```
+
+You could also automate the above by running the following sed command: `sed -i flatpak-spotify-adblock.sh -e 's/LD_PRELOAD=/LD_PRELOAD='"$(pwd | sed 's/\//\\\//g')"'\/spotify-adblock.so:/g'`  
+
+Now you need to create a .desktop file which is exactly called `com.spotify.Client.desktop` in `~/.local/share/applications` that would have the following contents:  
+
+```
+[Desktop Entry]
+Type=Application
+Name=Spotify
+GenericName=Online music streaming service
+Comment=Access all of your favorite music
+Icon=com.spotify.Client
+Exec=flatpak run --command="/path/to/flatpak-spotify-adblock.sh" --file-forwarding com.spotify.Client @@u %U @@
+Terminal=false
+MimeType=x-scheme-handler/spotify;
+Categories=Audio;Music;AudioVideo;
+Keywords=Music;Player;Streaming;Online;
+StartupWMClass=Spotify
+X-GNOME-UsesNotifications=true
+X-Flatpak-Tags=proprietary;
+X-Flatpak=com.spotify.Client
+```
+
+Replace `/path/to/flatpak-spotify-adblock.sh` with the path to that script. Now you're done and should be able to open Spotify from your desktop menu.
 
 ## Usage
 
