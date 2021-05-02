@@ -2,7 +2,7 @@
 Spotify adblocker for Linux that works by wrapping `getaddrinfo` and `cef_urlrequest_create`, blocking non-whitelisted domains and blacklisted URLs.
 
 ### Notes
-* This does not work with the snap and Flatpak Spotify packages.
+* This does not work with the snap Spotify package.
 
 ## Build
 Prerequisites:
@@ -22,18 +22,28 @@ Prerequisites:
     $ make
 
 ## Install
+### Debian Package
     $ sudo make install
 
-## Usage
+### Flatpak
+    $ mkdir -p ~/.spotify-adblock && cp spotify-adblock.so ~/.spotify-adblock
+    $ flatpak override --user --filesystem="~/.spotify-adblock/spotify-adblock.so" com.spotify.Client
 
+## Usage
 ### Command-line
+#### Debian Package
     $ LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
 
+#### Flatpak
+    $ flatpak run --command=sh com.spotify.Client -c 'eval "$(sed s#LD_PRELOAD=#LD_PRELOAD=$HOME/.spotify-adblock/spotify-adblock.so:#g /app/bin/spotify)"'
+
 ### Desktop file
-You can also integrate it with your desktop environment by creating a `.desktop` file (e.g. `spotify-adblock.desktop`) in `~/.local/share/applications`. This lets you easily run it from an application launcher without opening a terminal.
+You can integrate it with your desktop environment by creating a `.desktop` file (e.g. `spotify-adblock.desktop`) in `~/.local/share/applications`. This lets you easily run it from an application launcher without opening a terminal.
+
+Examples:
 
 <details> 
-  <summary>Example</summary>
+  <summary>Debian Package</summary>
   <p>
 
 ```
@@ -44,6 +54,25 @@ GenericName=Music Player
 Icon=spotify-client
 TryExec=spotify
 Exec=env LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify %U
+Terminal=false
+MimeType=x-scheme-handler/spotify;
+Categories=Audio;Music;Player;AudioVideo;
+StartupWMClass=spotify
+```
+  </p>
+</details>
+
+<details>
+  <summary>Flatpak</summary>
+  <p>
+
+```
+[Desktop Entry]
+Type=Application
+Name=Spotify (adblock)
+GenericName=Music Player
+Icon=com.spotify.Client
+Exec=flatpak run --file-forwarding --command=sh com.spotify.Client -c 'eval "$(sed s#LD_PRELOAD=#LD_PRELOAD=$HOME/.spotify-adblock/spotify-adblock.so:#g /app/bin/spotify)"' @@u %U @@
 Terminal=false
 MimeType=x-scheme-handler/spotify;
 Categories=Audio;Music;Player;AudioVideo;
