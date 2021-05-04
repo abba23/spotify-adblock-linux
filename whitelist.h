@@ -25,17 +25,15 @@ static const char *whitelist[] = {
     "*.buzzsprout.com", // podcasts
     "platform-lookaside.fbsbx.com", // Facebook profile images
     "genius.com", // lyrics (genius-spicetify)
+    "*.googlevideo.com", // YouTube videos (Spicetify Reddit app)
     "*.gvt1.com", // Widevine download
-    "www.reddit.com", // reddit content (https://github.com/khanhas/spicetify-cli/tree/master/CustomApps/reddit)
-    "www.youtube.com", // YouTube entry (https://github.com/khanhas/spicetify-cli/tree/master/CustomApps/reddit)
-    "i.ytimg.com", // YouTube thumbnail (https://github.com/khanhas/spicetify-cli/tree/master/CustomApps/reddit)
-    "*.googlevideo.com", // YouTube video playback (https://github.com/khanhas/spicetify-cli/tree/master/CustomApps/reddit)
     "hwcdn.libsyn.com", // podcasts
     "traffic.libsyn.com", // podcasts
     "api*-desktop.musixmatch.com", // lyrics (genius-spicetify)
     "*.podbean.com", // podcasts
     "dts.podtrac.com", // podcasts
     "www.podtrac.com", // podcasts
+    "www.reddit.com", // Reddit (Spicetify Reddit app)
     "audio.simplecast.com", // podcasts
     "media.simplecast.com", // podcasts
     "ap.spotify.com", // audio (access point)
@@ -53,6 +51,8 @@ static const char *whitelist[] = {
     "audio-fa.spotifycdn.com", // audio
     "seed-mix-image.spotifycdn.com", // mix images
     "download.ted.com", // podcasts
+    "www.youtube.com", // YouTube (Spicetify Reddit app)
+    "i.ytimg.com", // YouTube images (Spicetify Reddit app)
     "dcs*.megaphone.fm", // podcasts
     "traffic.megaphone.fm", // podcasts
     "audio-ak-spotify-com.akamaized.net", // audio
