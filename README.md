@@ -1,3 +1,5 @@
+# This project has been deprecated in favor of its rewrite in Rust (https://github.com/abba23/spotify-adblock).
+
 # spotify-adblock-linux
 Spotify adblocker for Linux that works by wrapping `getaddrinfo` and `cef_urlrequest_create`, blocking non-whitelisted domains and blacklisted URLs.
 
